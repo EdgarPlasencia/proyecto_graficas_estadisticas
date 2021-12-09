@@ -6,6 +6,8 @@ var salSanFrancisco=[];
 var salSingapore=[];
 var salSydney=[];
 var salTokyo=[];
+var fechas=[];
+var info=[];
 
 inicializarDataTable();
 
@@ -20,20 +22,9 @@ var barras=Highcharts.chart('container', {
       text: 'Estadistica por ciudad'
     },
     xAxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ],
+      categories: fechas,
+      min:0,
+      max:fechas.length,
       crosshair: true
     },
     yAxis: {
@@ -117,6 +108,48 @@ var barras=Highcharts.chart('container', {
 
         for(var i=0;i<data.length;i++){
 
+
+          //CARGAR INFO POR FECHA Y SALARIO
+          var fecha=data[i][4];
+
+          var parts =fecha.split('/');
+          var f=parts[0]+'-'+parts[1]+'-'+parts[2];
+          var mydate = new Date(f); 
+          //console.log(f);
+          var strSal=data[i][5];
+          var floatSal=strSal.slice(1);
+          var sal=parseFloat(floatSal.replace(/,/g, ''));
+          
+          var ciudad=data[i][2];
+          //console.log(obj.fecha);
+
+          info.push({sal,mydate,ciudad});
+
+        }
+
+        //console.log(salEdinburgh);
+
+        //ORDENAR LAS FECHAS
+        info.sort(function (a, b) {
+          return a.mydate - b.mydate;
+        });
+
+        //console.log(info);
+
+        /*
+        console.log(info[0]);
+        console.log(info[1]);
+        console.log(info[2]);
+        console.log(info[3]);
+        console.log(info[4]);
+        */
+        
+
+        for(var i=0;i<info.length;i++){
+
+          var tempf=info[i].mydate;
+          fechas.push(tempf);
+
             if(data[i][2]=="Edinburgh"){
                 //console.log('Edinburgh');
 
@@ -125,6 +158,8 @@ var barras=Highcharts.chart('container', {
             var sal=parseFloat(floatSal.replace(/,/g, ''));
             salEdinburgh.push(sal);
             
+            }else{
+              salEdinburgh.push('');
             }
 
             if(data[i][2]=="London"){
@@ -135,6 +170,8 @@ var barras=Highcharts.chart('container', {
             var sal=parseFloat(floatSal.replace(/,/g, ''));
             salLondon.push(sal);
             
+            }else{
+              salLondon.push('');
             }
 
             if(data[i][2]=="New York"){
@@ -145,6 +182,8 @@ var barras=Highcharts.chart('container', {
             var sal=parseFloat(floatSal.replace(/,/g, ''));
             salNewYork.push(sal);
             
+            }else{
+              salNewYork.push('');
             }
 
             if(data[i][2]=="San Francisco"){
@@ -155,6 +194,8 @@ var barras=Highcharts.chart('container', {
             var sal=parseFloat(floatSal.replace(/,/g, ''));
             salSanFrancisco.push(sal);
             
+            }else{
+              salSanFrancisco.push('');   
             }
 
             if(data[i][2]=="Singapore"){
@@ -165,6 +206,8 @@ var barras=Highcharts.chart('container', {
             var sal=parseFloat(floatSal.replace(/,/g, ''));
             salSingapore.push(sal);
             
+            }else{
+              salSingapore.push('');
             }
 
             if(data[i][2]=="Sydney"){
@@ -175,6 +218,8 @@ var barras=Highcharts.chart('container', {
             var sal=parseFloat(floatSal.replace(/,/g, ''));
             salSydney.push(sal);
             
+            }else{
+              salSydney.push('');
             }
             
             if(data[i][2]=="Tokyo"){
@@ -185,11 +230,26 @@ var barras=Highcharts.chart('container', {
             var sal=parseFloat(floatSal.replace(/,/g, ''));
             salTokyo.push(sal);
             
+            }else{
+              salTokyo.push('');
             }
             
-
-        }
-        
-        //console.log(salEdinburgh);
     }
+
+
+
+    var startDate = new Date("2008-01-01");
+    var endDate = new Date("2009-01-01");
+
+    var resultProductData = fechas.filter(function(date) { return date >= startDate && date <= endDate });
+        // if there is more than 0 results keep it. if 0 then filter it away
+      
+   
+    console.log(resultProductData);
+    
+    fechas=resultProductData;
+    //console.log(fechas);
+        
+    }
+
 
