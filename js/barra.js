@@ -7,6 +7,9 @@ var salSingapore=[];
 var salSydney=[];
 var salTokyo=[];
 var fechas=[];
+var fechasProt=[];
+var infoTemp=[];
+var infoBK=[];
 var info=[];
 
 inicializarDataTable();
@@ -49,7 +52,7 @@ var barras=Highcharts.chart('container', {
     },
     series: [{
       name: 'Edinburgh',
-      data: salEdinburgh
+      data: salEdinburgh.slice(0,(fechas.length))
       //data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
   
     }, {
@@ -59,48 +62,184 @@ var barras=Highcharts.chart('container', {
   
     }, {
       name: 'New York',
-      data: salNewYork
+      data: salNewYork.slice(0,(fechas.length))
       //data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
   
     }, {
       name: 'San Francisco',
-      data: salSanFrancisco
+      data: salSanFrancisco.slice(0,(fechas.length))
       //data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
   
     },{
         name: 'Singapore',
-        data: salSingapore
+        data: salSingapore.slice(0,(fechas.length))
     },{
         name: 'Sydney',
-        data: salSydney
+        data: salSydney.slice(0,(fechas.length))
     },{
         name: 'Tokyo',
-        data: salTokyo
+        data: salTokyo.slice(0,(fechas.length))
     }]
   });
 
 
   function filtDate(){
+
+    fechas=fechasProt;
+    infoTemp=infoBK;
+
     var temp1=document.getElementById('start').value;
     var temp2=document.getElementById('enddate').value;
     //console.log(temp1);
     //console.log(temp2);
     var startDate = new Date(temp1);
     var endDate = new Date(temp2);
-
+    infoTemp=info.filter(function(date) { return date.mydate >= startDate && date.mydate <= endDate });
     var resultProductData = fechas.filter(function(date) { return date >= startDate && date <= endDate });
-    // if there is more than 0 results keep it. if 0 then filter it away
-      
+    //if there is more than 0 results keep it. if 0 then filter it away
    
     //console.log(resultProductData);
     
+    /*
+    console.log(salEdinburgh);
+    salEdinburgh=[];
+    console.log(salEdinburgh);
+    */
+    
+     salEdinburgh=[];
+     salLondon=[];
+     salNewYork=[];
+     salSanFrancisco=[];
+     salSingapore=[];
+     salSydney=[];
+     salTokyo=[];
+
+     for(var i=0;i<infoTemp.length;i++){
+
+        if(infoTemp[i].ciudad=="Edinburgh"){
+            //console.log('Edinburgh');
+
+        var sal=infoTemp[i].sal;
+        salEdinburgh.push(sal);
+        
+        }else{
+          salEdinburgh.push('');
+        }
+
+        if(infoTemp[i].ciudad=="London"){
+            //console.log('London');
+
+        var sal=infoTemp[i].sal;
+        salLondon.push(sal);
+        
+        }else{
+          salLondon.push('');
+        }
+
+        if(infoTemp[i].ciudad=="New York"){
+            //console.log('New York');
+
+        var sal=infoTemp[i].sal;    
+        salNewYork.push(sal);
+        
+        }else{
+          salNewYork.push('');
+        }
+
+        if(infoTemp[i].ciudad=="San Francisco"){
+            //console.log('San Francisco');
+
+        var sal=infoTemp[i].sal; 
+        salSanFrancisco.push(sal);
+        
+        }else{
+          salSanFrancisco.push('');   
+        }
+
+        if(infoTemp[i].ciudad=="Singapore"){
+            //console.log('Singapore');
+
+        var sal=infoTemp[i].sal; 
+        salSingapore.push(sal);
+        
+        }else{
+          salSingapore.push('');
+        }
+
+        if(infoTemp[i].ciudad=="Sydney"){
+            //console.log('Sydney');
+
+        var sal=infoTemp[i].sal; 
+        salSydney.push(sal);
+        
+        }else{
+          salSydney.push('');
+        }
+        
+        if(infoTemp[i].ciudad=="Tokyo"){
+            //console.log('Tokyo');
+
+        var sal=infoTemp[i].sal; 
+        salTokyo.push(sal);
+        
+        }else{
+          salTokyo.push('');
+        }
+
+      }
+
+      console.log(salEdinburgh);
+      console.log(salLondon);
+      console.log(salNewYork);
+      console.log(salSanFrancisco);
+    //console.log(salEdinburgh);
+
+
+    var series=[
+      {
+        name: 'Edinburgh',
+        data: salEdinburgh
+        //data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+    
+      }, {
+        name: 'London',
+        data: salLondon
+        
+    
+      }, {
+        name: 'New York',
+        data: salNewYork
+        
+    
+      }, {
+        name: 'San Francisco',
+        data: salSanFrancisco
+        
+    
+      },{
+          name: 'Singapore',
+          data: salSingapore
+      },{
+          name: 'Sydney',
+          data: salSydney
+      },{
+          name: 'Tokyo',
+          data: salTokyo
+      }
+    ];
+
+    barras.update({
+      series: series
+    }, true, true);
+
     fechas=resultProductData;
      barras.xAxis[0].update({
         categories: fechas,
         min:0,
-        max:(fechas.length-1)
+        max:fechas.length-1,
      });
      
+
     }
 
     function inicializarDataTable() {
@@ -148,6 +287,7 @@ var barras=Highcharts.chart('container', {
           return a.mydate - b.mydate;
         });
 
+        
         //console.log(info);
 
         /*
@@ -236,18 +376,30 @@ var barras=Highcharts.chart('container', {
             
     }
 
-
+    fechasProt=fechas;
+    infoBK=info;
+    infoTemp=info;
     var temp1=document.getElementById('start').value;
     var temp2=document.getElementById('enddate').value;
     //console.log(temp1);
     //console.log(temp2);
+  
+    /*
+    
+    */
     var startDate = new Date(temp1);
     var endDate = new Date(temp2);
 
+    infoTemp=info.filter(function(date) { return date.mydate >= startDate && date.mydate <= endDate });
     var resultProductData = fechas.filter(function(date) { return date >= startDate && date <= endDate });
     // if there is more than 0 results keep it. if 0 then filter it away
-      
-   
+    
+
+    //console.log(infoTemp);
+    //console.log(infoTemp[0].mydate);
+    //console.log(infoTemp[1].mydate);
+    //console.log(infoTemp[2].mydate);
+    //console.log(infoTemp[3].mydate);
     //console.log(resultProductData);
     
     fechas=resultProductData;
