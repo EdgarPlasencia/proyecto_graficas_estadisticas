@@ -98,7 +98,7 @@ var barras=Highcharts.chart('container', {
      barras.xAxis[0].update({
         categories: fechas,
         min:0,
-        max:fechas.length-1,
+        max:(fechas.length-1)
      });
      
     }
