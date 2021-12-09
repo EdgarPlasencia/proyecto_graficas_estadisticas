@@ -24,7 +24,7 @@ var barras=Highcharts.chart('container', {
     xAxis: {
       categories: fechas,
       min:0,
-      max:fechas.length,
+      max:(fechas.length-1),
       crosshair: true
     },
     yAxis: {
@@ -54,7 +54,7 @@ var barras=Highcharts.chart('container', {
   
     }, {
       name: 'London',
-      data: salLondon
+      data: salLondon.slice(0,(fechas.length))
       //data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
   
     }, {
@@ -81,11 +81,26 @@ var barras=Highcharts.chart('container', {
 
 
   function filtDate(){
-    /*
+    var temp1=document.getElementById('start').value;
+    var temp2=document.getElementById('enddate').value;
+    //console.log(temp1);
+    //console.log(temp2);
+    var startDate = new Date(temp1);
+    var endDate = new Date(temp2);
+
+    var resultProductData = fechas.filter(function(date) { return date >= startDate && date <= endDate });
+    // if there is more than 0 results keep it. if 0 then filter it away
+      
+   
+    //console.log(resultProductData);
+    
+    fechas=resultProductData;
      barras.xAxis[0].update({
-        categories:['1','2','3']
+        categories: fechas,
+        min:0,
+        max:(fechas.length-1)
      });
-     */
+     
     }
 
     function inicializarDataTable() {
@@ -103,7 +118,6 @@ var barras=Highcharts.chart('container', {
         .data();
         
         //console.log(data.length);
-        var arrSal=[];
 
 
         for(var i=0;i<data.length;i++){
@@ -150,84 +164,70 @@ var barras=Highcharts.chart('container', {
           var tempf=info[i].mydate;
           fechas.push(tempf);
 
-            if(data[i][2]=="Edinburgh"){
+            if(info[i].ciudad=="Edinburgh"){
                 //console.log('Edinburgh');
 
-            var strSal=data[i][5];
-            var floatSal=strSal.slice(1);
-            var sal=parseFloat(floatSal.replace(/,/g, ''));
+            var sal=info[i].sal;
             salEdinburgh.push(sal);
             
             }else{
               salEdinburgh.push('');
             }
 
-            if(data[i][2]=="London"){
+            if(info[i].ciudad=="London"){
                 //console.log('London');
 
-            var strSal=data[i][5];
-            var floatSal=strSal.slice(1);
-            var sal=parseFloat(floatSal.replace(/,/g, ''));
+            var sal=info[i].sal;
             salLondon.push(sal);
             
             }else{
               salLondon.push('');
             }
 
-            if(data[i][2]=="New York"){
+            if(info[i].ciudad=="New York"){
                 //console.log('New York');
 
-            var strSal=data[i][5];
-            var floatSal=strSal.slice(1);
-            var sal=parseFloat(floatSal.replace(/,/g, ''));
+            var sal=info[i].sal;    
             salNewYork.push(sal);
             
             }else{
               salNewYork.push('');
             }
 
-            if(data[i][2]=="San Francisco"){
+            if(info[i].ciudad=="San Francisco"){
                 //console.log('San Francisco');
 
-            var strSal=data[i][5];
-            var floatSal=strSal.slice(1);
-            var sal=parseFloat(floatSal.replace(/,/g, ''));
+            var sal=info[i].sal; 
             salSanFrancisco.push(sal);
             
             }else{
               salSanFrancisco.push('');   
             }
 
-            if(data[i][2]=="Singapore"){
+            if(info[i].ciudad=="Singapore"){
                 //console.log('Singapore');
 
-            var strSal=data[i][5];
-            var floatSal=strSal.slice(1);
-            var sal=parseFloat(floatSal.replace(/,/g, ''));
+            var sal=info[i].sal; 
             salSingapore.push(sal);
             
             }else{
               salSingapore.push('');
             }
 
-            if(data[i][2]=="Sydney"){
+            if(info[i].ciudad=="Sydney"){
                 //console.log('Sydney');
 
-            var strSal=data[i][5];
-            var floatSal=strSal.slice(1);
-            var sal=parseFloat(floatSal.replace(/,/g, ''));
+            var sal=info[i].sal; 
             salSydney.push(sal);
             
             }else{
               salSydney.push('');
             }
             
-            if(data[i][2]=="Tokyo"){
+            if(info[i].ciudad=="Tokyo"){
                 //console.log('Tokyo');
 
-            var strSal=data[i][5];
-            var floatSal=strSal.slice(1);
-            var sal=parseFloat(floatSal.replace(/,/g, ''));
+            var sal=info[i].sal; 
             salTokyo.push(sal);
             
             }else{
@@ -237,15 +237,18 @@ var barras=Highcharts.chart('container', {
     }
 
 
-
-    var startDate = new Date("2008-01-01");
-    var endDate = new Date("2009-01-01");
+    var temp1=document.getElementById('start').value;
+    var temp2=document.getElementById('enddate').value;
+    //console.log(temp1);
+    //console.log(temp2);
+    var startDate = new Date(temp1);
+    var endDate = new Date(temp2);
 
     var resultProductData = fechas.filter(function(date) { return date >= startDate && date <= endDate });
-        // if there is more than 0 results keep it. if 0 then filter it away
+    // if there is more than 0 results keep it. if 0 then filter it away
       
    
-    console.log(resultProductData);
+    //console.log(resultProductData);
     
     fechas=resultProductData;
     //console.log(fechas);
