@@ -48,20 +48,14 @@
 
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="nusuarioR.html">
+                        <a class="sidebar-link" href="/nusuarioR">
                             <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Añadir User</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="eusuarioR.html">
+                        <a class="sidebar-link" href="/eusuarioR">
                             <i class="align-middle" data-feather="user-minus"></i> <span class="align-middle">Eliminar User</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="atablasR.html">
-                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Administrar Tablas</span>
                         </a>
                     </li>
 
@@ -88,13 +82,9 @@
                                 <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Edgar Plasencia" /> <span class="text-dark">Usuario</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+                                <a class="dropdown-item" href="/"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href=""><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                <a class="dropdown-item" href="/pages-sign-in">Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -112,16 +102,6 @@
 
 
 
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      OPCIONES DE CUENTA
-                    </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">CONFIGURACION</a></li>
-                            <li><a class="dropdown-item" href="#">DETALLES</a></li>
-                            <li><a class="dropdown-item" href="">CERRAR SESION</a></li>
-                        </ul>
-                    </div>
 
                     <div class="text-center">
 
@@ -138,106 +118,20 @@
 
                                 <th>CorreO/NombreUsuario</th>
 
-                                <th>Contraseña</th>
-
                                 <th>Tipo Usuario</th>
 
                             </tr>
 
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id=registro>
 
-                                <td>admin</td>
-
-                                <td>admin@gmail.com</td>
-
-                                <td>admin1</td>
-
-                                <td>Administrator</td>
-
-
-
-                            </tr>
-
-                            <tr>
-
-                                <td>jean</td>
-
-                                <td>jean@gmail.com</td>
-
-                                <td>1619</td>
-
-                                <td>Usuario</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>nathaly</td>
-
-                                <td>nathaly@gmail.com</td>
-
-                                <td>2122</td>
-
-                                <td>Usuario</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>david</td>
-
-                                <td>david@gmail.com</td>
-
-                                <td>3233</td>
-
-                                <td>Usuario</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>edgar</td>
-
-                                <td>edgar@gmail.com</td>
-
-                                <td>1415</td>
-
-                                <td>Usuario</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>--</td>
-
-                                <td>--</td>
-
-                                <td>--</td>
-
-                                <td>--</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>--</td>
-
-                                <td>--</td>
-
-                                <td>--</td>
-
-                                <td>--</td>
-
-                            </tr>
                         </tbody>
                     </table>
 
 
                     <div class="d-grid gap-2 col-3 mx-auto d-md-block">
-                        <button type="button" class="btn btn-dark"><a href="nusuarioR.html">Añadir Usuarios</a></button>
-                        <button type="button" class="btn btn-dark"><a href="eusuarioR.html">Eliminar Usuarios</a></button>
+                        <button type="button" class="btn btn-dark"><a href="/nusuarioR">Añadir Usuarios</a></button>
+                        <button type="button" class="btn btn-dark"><a href="/eusuarioR">Eliminar Usuarios</a></button>
                     </div>
 
 
@@ -284,6 +178,6 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-
+<script src="js/cargarusuarios.js"></script>
 
 </html>

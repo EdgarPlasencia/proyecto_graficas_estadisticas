@@ -56,19 +56,6 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="/pages-sign-up">
-                            <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-                        </a>
-                    </li>
-
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="/adminR">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">admin</span>
-                        </a>
-                    </li>
-
                     <li class="sidebar-header">
                         Info
                     </li>
@@ -102,13 +89,9 @@
                                 <img src="img/avatars/yo jop.jpg" class="avatar img-fluid rounded me-1" alt="Edgar Plasencia" /> <span class="text-dark">Usuario</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+                                <a class="dropdown-item" href="/"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href=""><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                <a class="dropdown-item" href="/pages-sign-in">Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -121,9 +104,30 @@
                     <figure class="highcharts-figure">
                         <div id="container"></div>
                         <p class="highcharts-description">
-                            Los datos recopilados muestran los datos de los salarios de acuerdo a la ciudad a la que pertenecen los empleados.
+                            Los datos recopilados del INEC que muestran los reportes de los salarios de noviembre de acuerdo al codigo de seccion que pertenece cada uno.
                         </p>
-                        <h3>FILTRAR INFORMACION DE LA TABLA</h3><br>
+                        <h3>VISUALIZACION DE LAS TABLAS</h3><br>
+
+                        <div class="mb-3">
+                            <label class="form-label">ELEGIR TABLA</label>
+                            <select class="form-select" id="lista-tablas">
+                                    <option value="1" selected>TABLA EMPLEADOS</option>
+                                    <option value="2">TABLA EMPRESAS</option>
+                                    <option value="3">TABLA PRODUCCION</option>
+                                    <option value="4">TABLA REMUNERACIONES</option>
+                                    
+                                </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">ELEGIR TIPO DE GRAFICA</label>
+                            <br>
+                            <button id="column">Column</button>
+                            <button id="line">Line</button>
+                            <button id="area">Area</button>
+                            <button id="scatter">Scatter</button>
+                            <button id="pie">Pie</button>
+                        </div>
 
                     </figure>
 
@@ -137,32 +141,23 @@
                                 <table class="table table-hover my-0 display" id="databasetable">
                                     <thead>
                                         <tr>
-                                            <th>SKU</th>
-                                            <th>NOMBRE</th>
-                                            <th>CATEGORIA</th>
-                                            <th>TAM. EMPAQUE</th>
-                                            <th>FORMATO</th>
+                                            <th id="cod_1_h">CODIGO SEC</th>
+                                            <th id="cod_2_h">TOTAL HOMBRES</th>
+                                            <th id="cod_3_h">TOTAL MUJERES</th>
+                                            <th id="cod_4_h">SUELDO HOMBRES</th>
+                                            <th id="cod_5_h">SUELDO MUJERES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!--
-                                        <tr>
-                                            <td>12345</td>
-                                            <td>Auto</td>
-                                            <td>Toyota</td>
-                                            <td>Corolla</td>
-                                            <td>28/01/2022</td>
-                                            <td>10000</td>
-                                        </tr>
-                                        -->
+
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>SKU</th>
-                                            <th>NOMBRE</th>
-                                            <th>CATEGORIA</th>
-                                            <th>TAM. EMPAQUE</th>
-                                            <th>FORMATO</th>
+                                            <th id="cod_1_f">CODIGO SEC</th>
+                                            <th id="cod_2_f">TOTAL HOMBRES</th>
+                                            <th id="cod_3_f">TOTAL MUJERES</th>
+                                            <th id="cod_4_f">SUELDO HOMBRES</th>
+                                            <th id="cod_5_f">SUELDO MUJERES</th>
 
                                         </tr>
                                     </tfoot>

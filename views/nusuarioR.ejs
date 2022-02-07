@@ -47,7 +47,7 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="adminR.html">
+                        <a class="sidebar-link" href="/adminR">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">admin</span>
                         </a>
                     </li>
@@ -59,16 +59,11 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="eusuarioR.html">
+                        <a class="sidebar-link" href="/eusuarioR">
                             <i class="align-middle" data-feather="user-minus"></i> <span class="align-middle">Eliminar User</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="atablasR.html">
-                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Administrar Tablas</span>
-                        </a>
-                    </li>
 
                 </ul>
 
@@ -93,13 +88,11 @@
                                 <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Edgar Plasencia" /> <span class="text-dark">Usuario</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+
+                                <a class="dropdown-item" href="/"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href=""><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                <a class="dropdown-item" href="/pages-sign-in">Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -116,18 +109,6 @@
                     </div>
 
                 </header>
-
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                          OPCIONES DE CUENTA
-                        </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">CONFIGURACION</a></li>
-                        <li><a class="dropdown-item" href="#">DETALLES</a></li>
-                        <li><a class="dropdown-item" href="">CERRAR SESION</a></li>
-                    </ul>
-                </div>
                 <BR>
 
                 <div class="text-center">
@@ -147,13 +128,17 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Contraseña</label>
-                                        <input class="form-control form-control-lg" type="password" name="password" id="pass" placeholder="Enter password email" />
+                                        <input class="form-control form-control-lg" type="password" name="password" id="pass" placeholder="Enter password" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Repetir Contraseña</label>
+                                        <input class="form-control form-control-lg" type="password" name="password" id="pass2" placeholder="Enter password" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Tipo</label>
                                         <select class="form-select" id="opciones-categoria"> 
                                                 <option value="" selected >Seleccione</option>
-                                                <option value="1">Administrator</option>
+                                                <option value="1">Administrador</option>
                                                 <option value="2">Usuario</option>
                                                 
                                             </select>
@@ -161,9 +146,8 @@
                                     <div class="text-center mt-3">
 
 
-                                        <input type="button" name="btnVerifivaca" id="btnVerifica" value="verificar" style="width: 50%">
-                                        <!--<a href="nusuario.html" class="btn btn-lg btn-primary btn btn-dark" id="btnVerifica">Añadir</a>-->
-                                        <!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+                                        <input type="button" name="btnVerifivaca" id="btnVerifica" value="CREAR" style="width: 50%">
+
                                     </div>
                                 </form>
                             </div>
@@ -221,6 +205,6 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<script src="js/iniciar.js"></script>
+<script src="js/crearusuario.js"></script>
 
 </html>
