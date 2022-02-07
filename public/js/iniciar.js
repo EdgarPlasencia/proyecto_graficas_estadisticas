@@ -1,26 +1,45 @@
-let datos = document.getElementById("datos");
+let datos = document.getElementById("signin").onclick = validar;
 
-document.getElementById("btnVerifica").onclick = validar;
+var tablaUsuarios;
+
+fetch('http://localhost:7000/api/usuarios')
+    .then(res => {
+        if (res.ok) {
+            console.log('SUCCESS')
+            return res.json()
+        } else {
+            console.log('NOT SUCCESSFUL')
+        }
+    })
+    .then(data => tablaUsuarios = data)
+    .catch(error => console.log('ERROR'));
 
 
+function validar() {
 
-function validar()
 
-{
     var usuario = document.getElementById("usuario").value;
-    var Contraseña = document.getElementById("pass").value;
+    var passwd = document.getElementById("pass").value;
     /*var email1 = document.getElementById("jean@gmail.com").value;	*/
 
+    if (tablaUsuarios.find(item => item.nombre == usuario)) {
 
-    if (usuario == "jean" && Contraseña == "1234") {
-        alert("SE REGSITRIO UN USUARIO NUEVO");
+        //Le estas pidiendo que te de el index del usuario que acabas de encontrar
+        var index = tablaUsuarios.findIndex(item => item.nombre == usuario);
 
+        //comparas la contraseña de ese usuario
+        if (passwd == tablaUsuarios[index].password) {
+
+            alert('DATOS CORRECTOS');
+
+            if (tablaUsuarios[index].tipo == 'admin') {
+                location.replace('/adminR');
+            } else {
+                location.replace('/');
+            }
+        }
+    } else {
+        alert('USUARIO O CONTRASEÑA INCORRECTOS');
     }
-    /*else if(email1 == "jean@gmail.com"){
-        alert("SE REGSITRIO UN USUARIO NUEVO");
-    }*/
-    else {
-        alert("COMPROBAR DATOS");
 
-    }
 }
